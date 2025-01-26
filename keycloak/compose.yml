@@ -8,8 +8,9 @@ services:
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin
       KC_HEALTH_ENABLED: "true"
       KC_METRICS_ENABLED: "true"
+      KC_FEATURES: "passkeys,update-email"
       DEBUG: "true"
-    command: "start --http-enabled true --hostname-strict false --features=update-email"
+    command: "start --http-enabled true --hostname-strict false"
     volumes:
       - kc_data:/opt/keycloak/data
       - ./create-clients.sh:/create-clients.sh:Z

@@ -31,7 +31,7 @@ function accountConsole() {
   </div>
 
   <div v-if="res == null">
-  Not logged int - <a @click="clientWithState.loginWithPrompt({ prompt: 'login'})">log in</a> or <a @click="clientWithState.loginWithPrompt({ prompt: 'login', par: true })">log in with PAR</a>
+  Not logged in - <a @click="clientWithState.loginWithPrompt({ prompt: 'login'})">log in</a> or <a @click="clientWithState.loginWithPrompt({ prompt: 'login', par: true })">log in with PAR</a>
     <span v-if="clientWithState.isRegistrationSupported()">
     or <a @click="clientWithState.loginWithPrompt({ prompt: 'create'})">register</a>
     </span>
@@ -45,13 +45,15 @@ function accountConsole() {
   </div>
 
   <div v-if="res">
-    <!-- works: UPDATE_PASSWORD, delete_account (if enabled and user has the permissions), UPDATE_EMAIL (if enabled), UPDATE_PROFILE -->
+    <!-- adding street and country for address plus others -->
+    <a @click="clientWithState.loginWithPrompt({ extraScope: 'address'})">Extra scope address</a> or
+    <a @click="clientWithState.loginWithPrompt( { extraScope: 'acr', acr: '2'})">ACR 2</a> <br>
+    <a :href="accountConsole()" >Account console</a><br>
+    <!-- works: UPDATE_PASSWORD, delete_account (if enabled and user has the permissions), -->
     <a @click="clientWithState.loginWithPrompt({ kcAction: 'UPDATE_PROFILE'})">Update profile</a> or
     <a @click="clientWithState.loginWithPrompt({ kcAction: 'UPDATE_PASSWORD'})">Update password</a> or
-    <a @click="clientWithState.loginWithPrompt({ extraScope: 'address'})">Extra scope address</a> or
-    <a @click="clientWithState.loginWithPrompt( { extraScope: 'acr', acr: '2'})">ACR 2</a> or
-    <!-- adding street and country for address plus others -->
-    <a :href="accountConsole()" >Account console</a>
+    <a @click="clientWithState.loginWithPrompt({ kcAction: 'webauthn-register-passwordless'})">Webauthn Register Passwordless</a> (if enabled) or
+    <a @click="clientWithState.loginWithPrompt({ kcAction: 'UPDATE_EMAIL'})">Update email</a> (if enabled)
   </div>
 
 </template>

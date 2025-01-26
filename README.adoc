@@ -19,7 +19,7 @@ Watch the Network console with filtering for only *Fetch/XHR* and *Doc* type req
 POST query parameters to `ext/par/request`, =...&prompt=login...+` => `+...session_state=...code=...+`
 
 . Get tokens +
-`POST with everything to server endpoint, then open `+.../auth?request_uri=...` -> ID-Token, Access Token, Refresh Token, ...
+`POST` with everything to server endpoint, then open `+.../auth?request_uri=...` -> ID-Token, Access Token, Refresh Token, ...
 
 . OpenID Connect Session Management to check if the user is still logged in +
 IFrame `+.../login-status-iframe.html+` + `session_state` + JavaScript `sendMessage()` / `receiveMessage()`
@@ -30,6 +30,8 @@ IFrame `+.../login-status-iframe.html+` + `session_state` + JavaScript `sendMess
 . Use the access token to retrieve information from the user info endpoint (as an example of a protected resource)
 
 . Refresh the access token when necessary
++
+`POST` with `refresh_token` to token endpoint -> ID-Token, Access Token, Refresh Token, ...
 
 . Logout +
 `+.../logout?post_logout_redirect_uri=...&id_token_hint=...&client_id=...+`
@@ -39,6 +41,7 @@ IFrame `+.../login-status-iframe.html+` + `session_state` + JavaScript `sendMess
 `+.../auth?redirect_uri=...&prompt=login...+` => `+...session_state=...code=...+`
 
 . Enforce second factor authentication (can also be enforced in Keycloak client configuration) +
+(will work after configuring a https://www.keycloak.org/docs/latest/server_admin/#_step-up-flow[new browser flow in Keycloak]) +
 `+.../auth?...acr_values=2...+` => level shown in the token
 
 . Application Initiated Actions (non-standard)
