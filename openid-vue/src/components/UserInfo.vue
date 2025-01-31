@@ -27,7 +27,7 @@ function accountConsole() {
 
   <br>
   <a @click="clientWithState.logout()">log out</a>
-    or <a @click="clientWithState.loginWithPrompt('login', undefined)">re-authenticate</a>
+    or <a @click="clientWithState.loginWithPrompt({ prompt: 'login' })">re-authenticate</a>
   </div>
 
   <div v-if="res == null">
