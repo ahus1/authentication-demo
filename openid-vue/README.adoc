@@ -27,7 +27,9 @@ npm run dev
 
 . Open your browser on http://localhost:5173/
 
-. Run the app in development mode
+OR:
+
+. Run the app in production mode
 +
 [source,bash]
 ----

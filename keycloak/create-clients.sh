@@ -16,6 +16,8 @@ kcadm.sh create realms -s realm=${REALM_NAME} -s enabled=true -s registrationAll
 kcadm.sh create users -s username=test -s enabled=true -s firstName=Theo -s lastName=Tester -s email=test@example.com -r $REALM_NAME
 kcadm.sh set-password -r $REALM_NAME --username test --new-password test-password
 
+kcadm.sh update realms/${REALM_NAME} -x -s 'smtpServer.host=::1' -s 'smtpServer.port=1025' -s 'smtpServer.from=keycloak@example.com' -s 'smtpServer.fromDisplayName=Keycloak' -s 'smtpServer.auth=false' -s 'smtpServer.ssl=false'
+
 CID=$(kcadm.sh create clients -r $REALM_NAME -i -f - <<EOF
 {
   "clientId": "openid-vue",

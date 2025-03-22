@@ -1,0 +1,17 @@
+= Demo container for emails
+
+== What to see here
+
+https://github.com/maildev/maildev[MailDev] is a catch-all email server that receives all emails and shows them in a web UI.
+
+== Starting the demo
+
+. Run the following command to build and start MailDev:
++
+[source,bash]
+----
+podman compose up --build --force-recreate
+----
+
+. Open your browser on http://localhost:1080
+

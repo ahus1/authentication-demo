@@ -38,10 +38,7 @@ function accountConsole() {
   </div>
 
   <div v-if="res && !res.email_verified">
-    <!-- Not implemented yet: VERIFY_EMAIL
-     https://github.com/keycloak/keycloak/issues/25154 -->
-    <!--
-    <a @click="clientWithState.loginWithPrompt(undefined, 'VERIFY_EMAIL')">Verify Email</a> -->
+    <a @click="clientWithState.loginWithPrompt({ kcAction: 'VERIFY_EMAIL'})">Verify Email</a>
   </div>
 
   <div v-if="res">

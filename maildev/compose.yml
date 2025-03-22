@@ -1,0 +1,6 @@
+version: "3.8"
+
+services:
+  keycloak:
+    image: docker.io/maildev/maildev # 26.1.4
+    network_mode: host

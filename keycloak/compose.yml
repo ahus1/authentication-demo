@@ -2,7 +2,8 @@ version: "3.8"
 
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:26.1.0
+    # E-Mail verification action is only available in nightly until 26.2 is released
+    image: quay.io/keycloak/keycloak:nightly # 26.2 nightly
     environment:
       KC_BOOTSTRAP_ADMIN_USERNAME: admin
       KC_BOOTSTRAP_ADMIN_PASSWORD: admin

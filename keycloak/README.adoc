@@ -21,7 +21,7 @@ podman compose up --build --force-recreate
 +
 [source,bash]
 ----
-podman exec keycloak_keycloak_1 /create-clients.sh
+podman exec keycloak-keycloak-1 ./create-clients.sh
 ----
 
 == Cleanups

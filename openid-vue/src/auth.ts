@@ -25,11 +25,17 @@ export async function loginWithPrompt(options : LoginOptions) {
   sessionStorage.setItem("codeVerifier", code_verifier);
   let code_challenge = await client.calculatePKCECodeChallenge(code_verifier)
 
-  let redirect_uri = window.location.href
+  let redirect_uri = new URL(window.location.href)
+
+  // Remove all query parameters left over from a previous auth request as this application doesn't use any query parameters
+  let keys = [...redirect_uri.searchParams.keys()]
+  for (let key of keys) {
+    redirect_uri.searchParams.delete(key)
+  }
 
   // redirect user to as.authorization_endpoint
   let parameters: Record<string, string> = {
-    redirect_uri,
+    redirect_uri: redirect_uri.href,
     scope: 'openid email',
     code_challenge,
     code_challenge_method
@@ -106,7 +112,13 @@ export async function init(server: URL, clientId: string, onSuccess: () => void)
     code_verifier = sessionStorage.getItem("codeVerifier") || undefined;
     if (code_verifier) {
       sessionStorage.removeItem("codeVerifier")
+    } else {
+      // code verifier not present, which indicates that the URL is stale,
+      // or that a URL for example from email validation has been opened in a new tab.
+      // In this case, just restart the login process with prompt none to see if the user is logged in or not.
+      loginWithPrompt({prompt: 'none' });
     }
+
     nonce = sessionStorage.getItem("nonce") || undefined;
     if (nonce) {
       sessionStorage.removeItem("nonce")
