@@ -6,7 +6,7 @@ This is an example project to show different capabilities of OpenID Connect stan
 
 Watch the Network console with filtering for only *Fetch/XHR* and *Doc* type requests.
 
-. Loading information about the server: .well-known/openid-configuration` based on the issuer +
+. Loading information about the server: `.well-known/openid-configuration` based on the issuer +
 `+http://localhost:8080/realms/test+` plus `/.well-known/openid-configuration`
 
 . Check if a user is logged in +
@@ -19,7 +19,7 @@ Watch the Network console with filtering for only *Fetch/XHR* and *Doc* type req
 POST query parameters to `ext/par/request`, `+...&prompt=login...+` => `+...session_state=...code=...+`
 
 . Get tokens +
-`POST` with everything to server endpoint, then open `+.../auth?request_uri=...+` -> ID-Token, Access Token, Refresh Token, ...
+POST` with everything to server endpoint, then open `+.../auth?request_uri=...+` -> ID-Token, Access Token, Refresh Token, ...
 
 . OpenID Connect Session Management to check if the user is still logged in +
 IFrame `+.../login-status-iframe.html+` + `session_state` + JavaScript `sendMessage()` / `receiveMessage()`
