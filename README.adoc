@@ -13,13 +13,13 @@ Watch the Network console with filtering for only *Fetch/XHR* and *Doc* type req
 `+.../auth?redirect_uri=...&prompt=none...+` => `+...?error=login_required...+`
 
 . Log in the user +
-`+.../auth?redirect_uri=...&prompt=login...+` => `+...session_state=...code=...+`
+`+.../auth?redirect_uri=...&prompt=login...+` => `++...session_state=...code=...++`
 
 . Use PAR instead of the URI (can be enforced von Keycloak side) +
-POST query parameters to `ext/par/request`, =...&prompt=login...+` => `+...session_state=...code=...+`
+POST query parameters to `ext/par/request`, `+...&prompt=login...+` => `+...session_state=...code=...+`
 
 . Get tokens +
-`POST` with everything to server endpoint, then open `+.../auth?request_uri=...` -> ID-Token, Access Token, Refresh Token, ...
+`POST` with everything to server endpoint, then open `+.../auth?request_uri=...+` -> ID-Token, Access Token, Refresh Token, ...
 
 . OpenID Connect Session Management to check if the user is still logged in +
 IFrame `+.../login-status-iframe.html+` + `session_state` + JavaScript `sendMessage()` / `receiveMessage()`
